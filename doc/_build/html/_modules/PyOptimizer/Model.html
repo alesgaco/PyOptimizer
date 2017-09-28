@@ -1,0 +1,209 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PyOptimizer.Model &#8212; PyOptimizer 1.0 documentation</title>
+    <link rel="stylesheet" href="../../_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+   
+  <link rel="stylesheet" href="../../_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <h1>Source code for PyOptimizer.Model</h1><div class="highlight"><pre>
+<span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">    Model</span>
+<span class="sd">    =====</span>
+
+<span class="sd">    This module contains all the basic classes to work and define a correct model for PyOptimizer</span>
+
+<span class="sd">    Example:</span>
+<span class="sd">    modelo = Model()</span>
+<span class="sd">    modelo.restriccion1 = Constraint(2 * modelo.var2() + 3 * modelo.var2() &gt; 1, &quot;left&quot;)</span>
+<span class="sd">    modelo.restriccion1 = Constraint(2 * modelo.var2() + 5 * modelo.var2() &gt; 1, &quot;left&quot;)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<div class="viewcode-block" id="Model"><a class="viewcode-back" href="../../PyOptimizer.html#PyOptimizer.Model.Model">[docs]</a><span class="k">class</span> <span class="nc">Model</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Modelo</span>
+<span class="sd">        =========</span>
+
+<span class="sd">        es la clase principal que debe contener en sus atributos todo lo necesario para un modelo de optimizacion</span>
+
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Objective"><a class="viewcode-back" href="../../PyOptimizer.html#PyOptimizer.Model.Objective">[docs]</a><span class="k">class</span> <span class="nc">Objective</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Funcion Objectivo</span>
+<span class="sd">        =========</span>
+<span class="sd">        es la funcion principal del modelo que se intenta minimizar</span>
+
+<span class="sd">        Atributos</span>
+<span class="sd">        *expr: es una funcion anonima que contiene la expresion matematica</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expr</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">expr</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Constraint"><a class="viewcode-back" href="../../PyOptimizer.html#PyOptimizer.Model.Constraint">[docs]</a><span class="k">class</span> <span class="nc">Constraint</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Restricciones</span>
+<span class="sd">        =========</span>
+
+<span class="sd">        representan las fronteras de decision del modelo</span>
+
+<span class="sd">        Atributos</span>
+<span class="sd">        * expr: es la expresion matematica que define la restriccion</span>
+<span class="sd">        * type: se refiere al tipo de restriccion que presenta</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">expr</span><span class="p">,</span> <span class="nb">type</span><span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">type</span> <span class="o">=</span> <span class="nb">type</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">expr</span> <span class="o">=</span> <span class="k">lambda</span><span class="p">:</span> <span class="n">expr</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Var"><a class="viewcode-back" href="../../PyOptimizer.html#PyOptimizer.Model.Var">[docs]</a><span class="k">class</span> <span class="nc">Var</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Variables</span>
+<span class="sd">        =========</span>
+
+<span class="sd">        se utilizan en el modelo como variables de decision</span>
+
+<span class="sd">        Atributos</span>
+<span class="sd">        * value: es el valor que tiene la variable durante todo el proceso de optimizacion</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span><span class="n">start</span> <span class="o">=</span> <span class="mi">0</span> <span class="p">):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">start</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span>
+    <span class="k">pass</span></div>
+
+
+<div class="viewcode-block" id="Set"><a class="viewcode-back" href="../../PyOptimizer.html#PyOptimizer.Model.Set">[docs]</a><span class="k">class</span> <span class="nc">Set</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Sets</span>
+<span class="sd">        =========</span>
+
+<span class="sd">        se utilizan en el modelo como indices para las variables de decision</span>
+
+<span class="sd">        Atributos</span>
+<span class="sd">        * index: es un array unidimensional que contiene los indices de una variable de decicsion</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">index</span> <span class="o">=</span> <span class="n">index</span>
+    <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">index</span>
+    <span class="k">pass</span></div>
+
+<div class="viewcode-block" id="Param"><a class="viewcode-back" href="../../PyOptimizer.html#PyOptimizer.Model.Param">[docs]</a><span class="k">class</span> <span class="nc">Param</span><span class="p">:</span>
+    <span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">        Parametros</span>
+<span class="sd">        =========</span>
+
+<span class="sd">        se utilizan en el modelo como constantes de las restricciones</span>
+
+<span class="sd">        Atributos</span>
+<span class="sd">        * data: es el valor que tiene el parametro para cada restriccion</span>
+<span class="sd">    &quot;&quot;&quot;</span>
+    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="p">[]):</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">data</span> <span class="o">=</span> <span class="n">data</span>
+    <span class="k">pass</span>
+    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">data</span>
+    <span class="k">pass</span></div>
+
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="kn">import</span> <span class="nn">doctest</span>
+    <span class="n">doctest</span><span class="o">.</span><span class="n">testmod</span><span class="p">()</span>
+</pre></div>
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="../../index.html">PyOptimizer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="../../index.html">Documentation overview</a><ul>
+  <li><a href="../index.html">Module code</a><ul>
+  </ul></li>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="../../search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Aldo Esteban Garces Correa.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+    </div>
+
+    
+
+    
+  </body>
+</html>

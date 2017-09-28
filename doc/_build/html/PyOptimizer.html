@@ -1,0 +1,178 @@
+
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>PyOptimizer package &#8212; PyOptimizer 1.0 documentation</title>
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body>
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="pyoptimizer-package">
+<h1>PyOptimizer package<a class="headerlink" href="#pyoptimizer-package" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="submodules">
+<h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="module-PyOptimizer.Model">
+<span id="pyoptimizer-model-module"></span><h2>PyOptimizer.Model module<a class="headerlink" href="#module-PyOptimizer.Model" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="model">
+<h3>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
+<p>This module contains all the basic classes to work and define a correct model for PyOptimizer</p>
+<p>Example:
+modelo = Model()
+modelo.restriccion1 = Constraint(2 * modelo.var2() + 3 * modelo.var2() &gt; 1, “left”)
+modelo.restriccion1 = Constraint(2 * modelo.var2() + 5 * modelo.var2() &gt; 1, “left”)</p>
+<dl class="class">
+<dt id="PyOptimizer.Model.Constraint">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Model.</code><code class="descname">Constraint</code><span class="sig-paren">(</span><em>expr</em>, <em>type</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PyOptimizer/Model.html#Constraint"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Model.Constraint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>representan las fronteras de decision del modelo</p>
+<p>Atributos
+* expr: es la expresion matematica que define la restriccion
+* type: se refiere al tipo de restriccion que presenta</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyOptimizer.Model.Model">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Model.</code><code class="descname">Model</code><a class="reference internal" href="_modules/PyOptimizer/Model.html#Model"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Model.Model" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>es la clase principal que debe contener en sus atributos todo lo necesario para un modelo de optimizacion</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyOptimizer.Model.Objective">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Model.</code><code class="descname">Objective</code><span class="sig-paren">(</span><em>expr</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PyOptimizer/Model.html#Objective"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Model.Objective" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>es la funcion principal del modelo que se intenta minimizar</p>
+<p>Atributos
+<a href="#id1"><span class="problematic" id="id2">*</span></a>expr: es una funcion anonima que contiene la expresion matematica</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyOptimizer.Model.Param">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Model.</code><code class="descname">Param</code><span class="sig-paren">(</span><em>data=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PyOptimizer/Model.html#Param"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Model.Param" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>se utilizan en el modelo como constantes de las restricciones</p>
+<p>Atributos
+* data: es el valor que tiene el parametro para cada restriccion</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyOptimizer.Model.Set">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Model.</code><code class="descname">Set</code><span class="sig-paren">(</span><em>index=[]</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PyOptimizer/Model.html#Set"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Model.Set" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>se utilizan en el modelo como indices para las variables de decision</p>
+<p>Atributos
+* index: es un array unidimensional que contiene los indices de una variable de decicsion</p>
+</dd></dl>
+
+<dl class="class">
+<dt id="PyOptimizer.Model.Var">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Model.</code><code class="descname">Var</code><span class="sig-paren">(</span><em>start=0</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PyOptimizer/Model.html#Var"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Model.Var" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+<p>se utilizan en el modelo como variables de decision</p>
+<p>Atributos
+* value: es el valor que tiene la variable durante todo el proceso de optimizacion</p>
+</dd></dl>
+
+</div>
+</div>
+<div class="section" id="module-PyOptimizer.Optimizer">
+<span id="pyoptimizer-optimizer-module"></span><h2>PyOptimizer.Optimizer module<a class="headerlink" href="#module-PyOptimizer.Optimizer" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="PyOptimizer.Optimizer.Optimizer">
+<em class="property">class </em><code class="descclassname">PyOptimizer.Optimizer.</code><code class="descname">Optimizer</code><span class="sig-paren">(</span><em>model</em><span class="sig-paren">)</span><a class="reference internal" href="_modules/PyOptimizer/Optimizer.html#Optimizer"><span class="viewcode-link">[source]</span></a><a class="headerlink" href="#PyOptimizer.Optimizer.Optimizer" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <a class="reference external" href="https://docs.python.org/2/library/functions.html#object" title="(in Python v2.7)"><code class="xref py py-class docutils literal"><span class="pre">object</span></code></a></p>
+</dd></dl>
+
+</div>
+<div class="section" id="module-PyOptimizer">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-PyOptimizer" title="Permalink to this headline">¶</a></h2>
+</div>
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper">
+<h1 class="logo"><a href="index.html">PyOptimizer</a></h1>
+
+
+
+
+
+
+
+
+<h3>Navigation</h3>
+
+<div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Aldo Esteban Garces Correa.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.4</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/PyOptimizer.rst.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

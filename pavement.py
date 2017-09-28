@@ -9,8 +9,5 @@ setup(
     license='MIT',
     author='Aldo Esteban Garces Correa',
     author_email='aegarcesc@unal.edu.co',
-    description='No linear optimizer focused on heuristic methods',
-    sphinx = Bunch(
-        builddir="_build"
-    )
+    description='No linear optimizer focused on heuristic methods'
 )

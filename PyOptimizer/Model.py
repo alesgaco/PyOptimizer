@@ -1,35 +1,57 @@
 """
-Model
-=====
+    Model
+    =====
 
-This module contains all the basic classes to work and define a correct model for PyOptimizer
+    This module contains all the basic classes to work and define a correct model for PyOptimizer
 
-Example:
-modelo = Model()
-modelo.restriccion1 = Constraint(2 * modelo.var2() + 3 * modelo.var2() > 1, "left")
-modelo.restriccion1 = Constraint(2 * modelo.var2() + 5 * modelo.var2() > 1, "left")
+    Example:
+    modelo = Model()
+    modelo.var2 = Var()
+    modelo.restriccion1 = Constraint(2 * modelo.var2() + 3 * modelo.var2() > 1, "left")
+    modelo.restriccion1 = Constraint(2 * modelo.var2() + 5 * modelo.var2() > 1, "left")
+modelo.objetivo = Objective(2 * modelo.var2() + 3 * modelo.var2())
+
 
 """
 
 class Model:
     """
-    Modelo
-    =========
-    es la clase principal que debe contener en sus atributos todo lo necesario para un modelo de optimizacion
+        Modelo
+        =========
+
+        es la clase principal que debe contener en sus atributos todo lo necesario para un modelo de optimizacion
 
     """
 
+    def __init__(self):
+
+        self.restrictions = []
+
+    def getObjetives(self):
+        objetives = []
+        for var in vars(self):
+            if(isinstance(var,Objective)):
+                objetives.append(var.expr)
+        return objetives
+
+
+    def getRestrictions(self):
+        restrictions = []
+        for var in vars(self):
+            if (isinstance(var, Constraint)):
+                restrictions.append(var.expr)
+        return(restrictions)
     pass
 
 
 class Objective:
     """
-    Funcion Objectivo
-    =========
-    es la funcion principal del modelo que se intenta minimizar
+        Funcion Objectivo
+        =========
+        es la funcion principal del modelo que se intenta minimizar
 
-    Atributos
-    *expr: es una funcion anonima que contiene la expresion matematica
+        Atributos
+        *expr: es una funcion anonima que contiene la expresion matematica
     """
 
     def __init__(self, expr):
@@ -39,13 +61,14 @@ class Objective:
 
 class Constraint:
     """
-    Restricciones
-    =========
-    representan las fronteras de decision del modelo
+        Restricciones
+        =========
 
-    Atributos
-    *expr: es la expresion matematica que define la restriccion
-    *type: se refiere al tipo de restriccion que presenta
+        representan las fronteras de decision del modelo
+
+        Atributos
+        * expr: es la expresion matematica que define la restriccion
+        * type: se refiere al tipo de restriccion que presenta
     """
 
     def __init__(self, expr, type):
@@ -56,12 +79,13 @@ class Constraint:
 
 class Var:
     """
-    Variables
-    =========
-    se utilizan en el modelo como variables de decision
+        Variables
+        =========
 
-    Atributos
-    *value: es el valor que tiene la variable durante todo el proceso de optimizacion
+        se utilizan en el modelo como variables de decision
+
+        Atributos
+        * value: es el valor que tiene la variable durante todo el proceso de optimizacion
     """
     def __init__(self,start = 0 ):
         self.value = start
@@ -72,12 +96,13 @@ class Var:
 
 class Set:
     """
-    Sets
-    =========
-    se utilizan en el modelo como indices para las variables de decision
+        Sets
+        =========
 
-    Atributos
-    *index: es un array unidimensional que contiene los indices de una variable de decicsion
+        se utilizan en el modelo como indices para las variables de decision
+
+        Atributos
+        * index: es un array unidimensional que contiene los indices de una variable de decicsion
     """
     def __init__(self, index=[]):
         self.index = index
@@ -88,12 +113,13 @@ class Set:
 
 class Param:
     """
-    Parametros
-    =========
-    se utilizan en el modelo como constantes de las restricciones
+        Parametros
+        =========
 
-    Atributos
-    *data: es el valor que tiene el parametro para cada restriccion
+        se utilizan en el modelo como constantes de las restricciones
+
+        Atributos
+        * data: es el valor que tiene el parametro para cada restriccion
     """
     def __init__(self, data=[]):
         self.data = data
