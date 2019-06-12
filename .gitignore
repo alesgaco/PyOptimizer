@@ -100,3 +100,6 @@ ENV/
 # mypy
 .mypy_cache/
 .idea/
+
+#mac stuff
+.DS_Store
